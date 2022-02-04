@@ -1,0 +1,47 @@
+<div class="fullpage">
+  <div class="form">
+    <form class="policy-form" [formGroup]="formPol" (ngSubmit)="sendFiles()">
+      <ul>
+        <h1>Formulario escaner póliza</h1>
+        <mat-form-field appearance="fill">
+          <mat-label>Aseguradora</mat-label>
+          <mat-select matNativeControl name="type" formControlName="type">
+            <option value="" selected></option>
+            <!--<option *ngFor="let car of cars" [value]="car.value">
+            {{car.viewValue}}
+        </option>-->
+            <mat-option value="reale">Reale</mat-option>
+            <mat-option value="liberty">Liberty</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <li>
+          <input
+            (change)="captureFiles($event)"
+            class="ng-hide"
+            id="input-file-id"
+            type="file"
+            accept="application/pdf"
+            formControlName="file"
+          />
+          <!-- poner el validador de archivo xd -->
+          <label
+            for="input-file-id"
+            class="md-button md-raised md-primary"
+          ></label>
+        </li>
+
+        <li>
+          <button
+            type="submit"
+            [disabled]="loading"
+            [disabled]="formPol.invalid"
+          >
+            {{ loading ? 'Analizando...' : 'Enviar' }}
+          </button>
+          <button type="button">cancelar</button>
+        </li>
+      </ul>
+    </form>
+  </div>
+</div>
