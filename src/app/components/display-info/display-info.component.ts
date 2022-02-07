@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { RestService } from 'src/app/rest.service';
+export interface FieldProperties {
+  field: string;
+  content: string;
+  confidence: number;
+}
 @Component({
   selector: 'app-display-info',
   templateUrl: './display-info.component.html',
@@ -7,14 +12,20 @@ import { RestService } from 'src/app/rest.service';
 })
 export class DisplayInfoComponent implements OnInit {
   constructor(private rest: RestService) {}
-  public displayedColumns: string[] = ['file', 'analysis', 'model', 'fields'];
   public dataSourceFile: any[] = [];
+  public analizedFile!: any[];
   ngOnInit(): void {
     this.loadResults().then((value: any) => {
       this.dataSourceFile = value;
-      console.log('line 18', this.dataSourceFile);
+      this.dataSource = this.dataSourceFile[0].analysis.fields;
+      this.analizedFile = [
+        {
+          fileName: this.dataSourceFile[0].file,
+          modelName: this.dataSourceFile[0].analysis.model,
+          modelConfidence: this.dataSourceFile[0].analysis.confidence,
+        },
+      ];
     });
-    //this.dataSource=ELEMENT_DATA;
   }
   loadResults() {
     try {
@@ -24,7 +35,23 @@ export class DisplayInfoComponent implements OnInit {
       throw e;
     }
   }
-  toJson(object: any) {
-    return JSON.stringify(object);
-  }
+  columns = [
+    {
+      columnDef: 'field',
+      header: 'Field name',
+      cell: (element: FieldProperties) => `${element.field}`,
+    },
+    {
+      columnDef: 'content',
+      header: 'Field value',
+      cell: (element: FieldProperties) => `${element.content}`,
+    },
+    {
+      columnDef: 'confidence',
+      header: 'Field confidence',
+      cell: (element: FieldProperties) => `${element.confidence}`,
+    },
+  ];
+  dataSource = this.dataSourceFile;
+  displayedColumns = this.columns.map((c) => c.columnDef);
 }

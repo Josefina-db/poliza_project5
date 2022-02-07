@@ -1,5 +1,15 @@
 .demo-table {
   width: 70%;
-  margin:auto;
+  margin: auto;
   margin-top: 20px;
+}
+.form {
+  position: relative;
+  z-index: 1;
+  background: #ffffff;
+  max-width: 500px;
+  margin: 0 auto auto;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }

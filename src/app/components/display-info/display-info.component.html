@@ -1,37 +1,26 @@
-<table mat-table [dataSource]="dataSourceFile" class="mat-elevation-z8">
-  <!--- Note that these columns can be defined in any order.
-        The actual rendered columns are set as a property on the row definition" -->
-  <!-- file Column -->
-  <ng-container matColumnDef="file">
-    <th mat-header-cell *matHeaderCellDef>Archivo</th>
-    <td mat-cell *matCellDef="let element">{{ element.file }}</td>
-  </ng-container>
-  <!-- analysis Column -->
-  <ng-container matColumnDef="analysis">
-    <th mat-header-cell *matHeaderCellDef>Confianza</th>
-    <td mat-cell *matCellDef="let element">
-      {{ element.analysis.confidence }}
+<div class="form">
+  <mat-list role="list" *ngFor="let file of analizedFile">
+    <mat-list-item role="listitem">File: {{ file.fileName }}</mat-list-item>
+    <mat-list-item role="listitem">Model: {{ file.modelName }}</mat-list-item>
+    <mat-list-item role="listitem"
+      >Model Confidence: {{ file.modelConfidence }}</mat-list-item
+    >
+  </mat-list>
+</div>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+  <ng-container
+    *ngFor="let column of columns"
+    [matColumnDef]="column.columnDef"
+  >
+    <th mat-header-cell *matHeaderCellDef>
+      {{ column.header }}
+    </th>
+    <td mat-cell *matCellDef="let row">
+      {{ column.cell(row) }}
     </td>
   </ng-container>
-  <!-- model Column -->
-  <ng-container matColumnDef="model">
-    <th mat-header-cell *matHeaderCellDef>Modelo</th>
-    <td mat-cell *matCellDef="let element">
-      {{ element.analysis.model }}
-    </td>
-  </ng-container>
-  <!-- fields Column -->
-  <ng-container matColumnDef="fields">
-    <th mat-header-cell *matHeaderCellDef>Datos</th>
-    <td mat-cell *matCellDef="let element">
-      <div *ngFor="let field of element.analysis.fields">
-        <div>
-          {{ field.field }} : {{ field.content }} - Confianza :
-          {{ field.confidence }}
-        </div>
-      </div>
-    </td>
-  </ng-container>
+
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>

@@ -13,6 +13,7 @@ import { AngularFileUploaderModule } from 'angular-file-uploader';
 import { MatTableModule } from '@angular/material/table';
 import { DisplayInfoComponent } from './components/display-info/display-info.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatListModule } from '@angular/material/list';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFileUploaderModule,
     MatTableModule,
     HttpClientModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
