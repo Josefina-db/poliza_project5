@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { RestService } from 'src/app/rest.service';
 
 @Component({
@@ -11,29 +12,19 @@ export class HomeComponent implements OnInit {
   formPol: FormGroup;
   private archivos: any = [];
   public loading: boolean = false;
-  private results: any = [];
 
-  constructor(public fb: FormBuilder, private rest: RestService) {
+  constructor(
+    public fb: FormBuilder,
+    private rest: RestService,
+    private router: Router
+  ) {
     this.formPol = this.fb.group({
       file: ['', [Validators.required]],
       type: ['', [Validators.required]],
     });
   }
 
-  ngOnInit(): void {
-    this.loadResults();
-  }
-
-  loadResults() {
-    try {
-      this.rest.get(`http://localhost:3000/results`).subscribe((response) => {
-        console.log(response);
-        this.results = response;
-      });
-    } catch (e) {
-      console.log('ERROR', e);
-    }
-  }
+  ngOnInit(): void {}
 
   onSubmit(): void {
     if (this.formPol.invalid) {
@@ -62,6 +53,7 @@ export class HomeComponent implements OnInit {
         .subscribe((res) => {
           this.loading = false;
           console.log('Respuesta del servidor', res);
+          this.router.navigate([`/displayInfo`]);
         });
       this.archivos = [];
     } catch (e) {
