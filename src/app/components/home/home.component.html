@@ -43,11 +43,19 @@
             type="submit"
             [disabled]="loading"
             [disabled]="formPol.invalid"
+            style=" padding: 10px;"
           >
             {{ loading ? "Analizando..." : "Enviar" }}
           </button>
-          <button type="button">cancelar</button>
+
+          <button style="padding: 10px" >cancelar</button>
         </li>
+        <li class="example-button-container">
+          <button type="reset" onClick="cleanData" mat-fab color="primary" aria-label="Example icon button with a delete icon">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </li>
+       
         <li>
           <mat-spinner
             class="spin"

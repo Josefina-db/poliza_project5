@@ -38,14 +38,14 @@
   background: #501780;
   width: 40%;
   border: 0;
-  padding: 10px;
   color: #ffffff;
   font-size: 14px;
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
   cursor: pointer;
-  margin-left: 20px;
-  margin-bottom: 25px;
+  margin-left:10px;
+  margin-right: 10px;
+  margin-bottom: 20px;
   letter-spacing: 1px;
 }
 .form button:hover,
@@ -95,6 +95,7 @@ h1 {
 
 .mat-progress-spinner {
   margin: auto;
+  margin-top: 50px;
 }
 
 :host ::ng-deep .mat-progress-spinner circle,
@@ -104,4 +105,10 @@ h1 {
 
 .mat-form-field{
   width: 100%;
+}
+
+
+.example-button-container {
+  margin:auto;
+  width: 120px;
 }
