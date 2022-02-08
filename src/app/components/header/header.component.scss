@@ -7,7 +7,7 @@
 /* Style the header links */
 .header a {
   float: left;
-  color: black;
+  color: #68319c;
   text-align: center;
   padding: 12px;
   text-decoration: none;
@@ -18,7 +18,7 @@
 
 /* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
 .header img.logo {
-  font-size: 10px;
+  font-size: 15px;
   font-weight: bold;
 }
 
@@ -30,8 +30,9 @@
 
 /* Style the active/current link*/
 .header a.active {
-  background-color: dodgerblue;
-  color: white;
+  background-color: rgb(247, 244, 252);
+  color: #68319c;
+  box-shadow: 0 1px 0 rgba(129, 49, 175, 0.2), 0 1px 4px 0 rgba(0, 0, 0, 0.24);
 }
 
 /* Float the link section to the right */

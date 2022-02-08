@@ -1,10 +1,12 @@
 <div class="form">
   <mat-list role="list" *ngFor="let file of analizedFile">
-    <mat-list-item role="listitem">File: {{ file.fileName }}</mat-list-item>
-    <mat-list-item role="listitem">Model: {{ file.modelName }}</mat-list-item>
-    <mat-list-item role="listitem"
-      >Model Confidence: {{ file.modelConfidence }}</mat-list-item
-    >
+    <mat-list-item role="listitem">
+      <mat-chip-list aria-label="Fish selection">
+        <mat-chip color="primary">Nombre Archivo: {{ file.fileName }}</mat-chip>
+        <mat-chip color="primary">Modelo: {{ file.modelName }}</mat-chip>
+        <mat-chip color="accent">Model confidence: {{ file.modelConfidence }}</mat-chip>
+      </mat-chip-list>
+      </mat-list-item>
   </mat-list>
 </div>
 

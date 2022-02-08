@@ -2,14 +2,41 @@
   width: 70%;
   margin: auto;
   margin-top: 20px;
+  border-radius: 10px;
 }
-.form {
-  position: relative;
-  z-index: 1;
-  background: #ffffff;
-  max-width: 500px;
-  margin: 0 auto auto;
-  padding: 10px;
-  text-align: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+
+th.mat-header-cell,
+td.mat-cell,
+td.mat-footer-cell {
+  padding: 0;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  color: purple;
+  font-style: oblique;
+  font-family: "Roboto";
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+}
+
+tr.mat-header-row {
+  background-color: rgb(236, 225, 255);
+}
+
+.mat-chip {
+  margin-top: 20px;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  text-decoration: solid;
+  background-color: rgb(236, 225, 255);
+  color: purple;
+  font-family: "Roboto";
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 0.7px;
+}
+
+div.form {
+  justify-content: center;
 }

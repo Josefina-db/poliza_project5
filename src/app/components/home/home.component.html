@@ -5,7 +5,12 @@
         <h1>Formulario escaner póliza</h1>
         <mat-form-field appearance="fill">
           <mat-label>Aseguradora</mat-label>
-          <mat-select matNativeControl name="type" formControlName="type">
+          <mat-select
+            matNativeControl
+            name="type"
+            required
+            formControlName="type"
+          >
             <option value="" selected></option>
             <!--<option *ngFor="let car of cars" [value]="car.value">
             {{car.viewValue}}
@@ -21,10 +26,11 @@
             class="ng-hide"
             id="input-file-id"
             type="file"
+            required
             accept="application/pdf"
             formControlName="file"
           />
-          <!-- poner el validador de archivo xd -->
+
           <label
             for="input-file-id"
             class="md-button md-raised md-primary"
@@ -32,14 +38,22 @@
         </li>
 
         <li>
+          <!--revistar form campos requeridos-->
           <button
             type="submit"
             [disabled]="loading"
             [disabled]="formPol.invalid"
           >
-            {{ loading ? 'Analizando...' : 'Enviar' }}
+            {{ loading ? "Analizando..." : "Enviar" }}
           </button>
           <button type="button">cancelar</button>
+        </li>
+        <li>
+          <mat-spinner
+            class="spin"
+            [diameter]="45"
+            *ngIf="showSpinner"
+          ></mat-spinner>
         </li>
       </ul>
     </form>

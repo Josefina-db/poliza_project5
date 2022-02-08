@@ -14,6 +14,9 @@ import { MatTableModule } from '@angular/material/table';
 import { DisplayInfoComponent } from './components/display-info/display-info.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatListModule } from '@angular/material/list';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatChipsModule } from '@angular/material/chips';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +35,8 @@ import { MatListModule } from '@angular/material/list';
     MatTableModule,
     HttpClientModule,
     MatListModule,
+    MatProgressSpinnerModule,
+    MatChipsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

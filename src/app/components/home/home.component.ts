@@ -12,6 +12,8 @@ export class HomeComponent implements OnInit {
   formPol: FormGroup;
   private archivos: any = [];
   public loading: boolean = false;
+  showSpinner = false;
+  hideForm = false;
 
   constructor(
     public fb: FormBuilder,
@@ -42,6 +44,7 @@ export class HomeComponent implements OnInit {
   sendFiles(): any {
     try {
       this.loading = true;
+      this.showSpinner = true;
       const formularioDatos = new FormData();
       this.archivos.forEach((archivo: any) => {
         formularioDatos.append('file', archivo);
@@ -52,6 +55,8 @@ export class HomeComponent implements OnInit {
         .post(`http://localhost:3000/multiple`, formularioDatos)
         .subscribe((res) => {
           this.loading = false;
+          this.showSpinner = false;
+          //this.hideForm = true;
           console.log('Respuesta del servidor', res);
           this.router.navigate([`/displayInfo`]);
         });
